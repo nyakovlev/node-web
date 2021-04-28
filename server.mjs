@@ -219,9 +219,12 @@ export default function createServer({port=3000, fileRoutes={}, onCreate}) {
     });
   };
 
-  let serve = () => {
+  let serve = (callback) => {
     server.listen(port, () => {
       console.log(`Running web server on *:${port}...`);
+      if (callback) {
+        callback();
+      }
     });
   }
 
